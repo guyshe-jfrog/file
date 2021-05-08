@@ -436,7 +436,9 @@ file_is_json(struct magic_set *ms, const struct buffer *b)
 #include <sys/stat.h>
 #include <stdio.h>
 #include <fcntl.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <stdlib.h>
 #include <stdint.h>
 #include <err.h>

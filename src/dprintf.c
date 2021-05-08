@@ -32,7 +32,9 @@ FILE_RCSID("@(#)$File: dprintf.c,v 1.2 2018/09/09 20:33:28 christos Exp $")
 #endif	/* lint */
 
 #include <assert.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <stdio.h>
 #include <stdarg.h>
 

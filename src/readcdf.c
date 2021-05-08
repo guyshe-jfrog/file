@@ -31,7 +31,9 @@ FILE_RCSID("@(#)$File: readcdf.c,v 1.74 2019/09/11 15:46:30 christos Exp $")
 
 #include <assert.h>
 #include <stdlib.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <string.h>
 #include <time.h>
 #include <ctype.h>
