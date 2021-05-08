@@ -82,7 +82,7 @@
 #include <tre/regex.h>
 #include <time.h>
 #include <sys/types.h>
-#ifndef WIN32
+#ifndef _WIN32
 #include <sys/param.h>
 #endif
 /* Do this here and now, because struct stat gets re-defined on solaris */
@@ -95,7 +95,7 @@
 #define MAGIC "/etc/magic"
 #endif
 
-#if defined(__EMX__) || defined (WIN32)
+#if defined(__EMX__) || defined (_WIN32)
 #define PATHSEP	';'
 #else
 #define PATHSEP	':'
@@ -103,7 +103,7 @@
 
 #define private static
 
-#if HAVE_VISIBILITY && !defined(WIN32)
+#if HAVE_VISIBILITY && !defined(_WIN32)
 #define public  __attribute__ ((__visibility__("default")))
 #ifndef protected
 #define protected __attribute__ ((__visibility__("hidden")))
