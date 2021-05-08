@@ -185,7 +185,7 @@ if test "$enable_libseccomp" != "no"; then
     AC_CHECK_LIB(seccomp, seccomp_init)
 fi
 if test "$MINGW" = 1; then
-  AC_CHECK_LIB(gnurx,regexec,,AC_MSG_ERROR([libgnurx is required to build file(1) with MinGW]))
+  AC_SEARCH_LIBS(tre_regexec,tre,,AC_MSG_ERROR([libtre is required to build file(1) with MinGW]))
 fi
 
 dnl See if we are cross-compiling

@@ -13,7 +13,7 @@ libmagic_la_SOURCES = buffer.c magic.c apprentice.c softmagic.c ascmagic.c \
 	file_opts.h elfclass.h mygetopt.h cdf.c cdf_time.c readcdf.c cdf.h
 libmagic_la_LDFLAGS = -no-undefined -version-info 1:0:0
 if MINGW
-MINGWLIBS = -lgnurx -lshlwapi
+MINGWLIBS = -lshlwapi
 else
 MINGWLIBS =
 endif
