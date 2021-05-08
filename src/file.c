@@ -38,7 +38,6 @@ FILE_RCSID("@(#)$File: file.c,v 1.195 2022/06/02 15:45:43 christos Exp $")
 #include "magic.h"
 
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
 #ifdef RESTORE_TIME
 # if (__COHERENT__ >= 0x420)

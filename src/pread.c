@@ -3,7 +3,9 @@
 FILE_RCSID("@(#)$File: pread.c,v 1.3 2014/09/15 19:11:25 christos Exp $")
 #endif  /* lint */
 #include <fcntl.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 
 ssize_t
 pread(int fd, void *buf, size_t len, off_t off) {
