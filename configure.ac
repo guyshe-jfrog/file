@@ -173,7 +173,7 @@ AC_REPLACE_FUNCS(getopt_long asprintf vasprintf strlcpy strlcat getline ctime_r 
 
 dnl Checks for libraries
 if test "$enable_zlib" != "no"; then
-  AC_CHECK_LIB(z, gzopen)
+  AC_SEARCH_LIBS(gzopen, [z zlib zlibd], have_zlib = "yes", have_zlib = "no")
 fi
 if test "$enable_bzlib" != "no"; then
   AC_CHECK_LIB(bz2, BZ2_bzCompressInit)
@@ -193,11 +193,11 @@ AM_CONDITIONAL(IS_CROSS_COMPILE, test "$cross_compiling" = yes)
 
 dnl Final sanity checks
 if test "$enable_zlib" = "yes"; then
-  if test "$ac_cv_header_zlib_h$ac_cv_lib_z_gzopen" != "yesyes"; then
+  if test "$ac_cv_header_zlib_h$have_zlib" != "yesyes"; then
     AC_MSG_ERROR([zlib support requested but not found])
   fi
 fi
-if  test "$ac_cv_header_zlib_h$ac_cv_lib_z_gzopen" = "yesyes"; then
+if  test "$ac_cv_header_zlib_h$have_zlib" = "yesyes"; then
   AC_DEFINE([ZLIBSUPPORT], 1, [Enable zlib compression support])
 fi
 if test "$enable_bzlib" = "yes"; then
