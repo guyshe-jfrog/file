@@ -92,6 +92,7 @@
 #if defined(HAVE_XLOCALE_H)
 #include <xlocale.h>
 #endif
+#include <dirent.h>
 
 #define ENABLE_CONDITIONALS
 
@@ -596,13 +597,30 @@ protected void buffer_init(struct buffer *, int, const struct stat *,
 protected void buffer_fini(struct buffer *);
 protected int buffer_fill(const struct buffer *);
 
+#include <locale.h>
+#if defined(HAVE_XLOCALE_H)
+#include <xlocale.h>
+#endif
 
+typedef struct {
+	const char *pat;
+#if defined(HAVE_NEWLOCALE) && defined(HAVE_USELOCALE) && defined(HAVE_FREELOCALE)
+#define USE_C_LOCALE
+	locale_t old_lc_ctype;
+	locale_t c_lc_ctype;
+#else
+	char *old_lc_ctype;
+#endif
+	int rc;
+	regex_t rx;
+} file_regex_t;
 
 protected int file_regcomp(struct magic_set *, file_regex_t *, const char *,
     int);
 protected int file_regexec(struct magic_set *, file_regex_t *, const char *,
     size_t, regmatch_t *, int);
 protected void file_regfree(file_regex_t *);
+protected void file_regerror(file_regex_t *, int, struct magic_set *);
 
 typedef struct {
 	char *buf;
