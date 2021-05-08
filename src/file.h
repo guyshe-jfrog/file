@@ -425,6 +425,12 @@ struct cont {
 
 #define MAGIC_SETS	2
 
+#ifdef _MSC_VER
+#include <BaseTsd.h>
+typedef int mode_t;
+typedef SSIZE_T ssize_t;
+#endif
+
 struct magic_set {
 	struct mlist *mlist[MAGIC_SETS];	/* list of regular entries */
 	struct cont c;
