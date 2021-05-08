@@ -88,6 +88,7 @@
 /* Do this here and now, because struct stat gets re-defined on solaris */
 #include <sys/stat.h>
 #include <stdarg.h>
+#include <dirent.h>
 
 #define ENABLE_CONDITIONALS
 
