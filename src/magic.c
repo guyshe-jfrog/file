@@ -461,6 +461,8 @@ file_or_fd(struct magic_set *ms, const char *inname, int fd)
 		errno = 0;
 		if ((fd = open(inname, flags)) < 0) {
 			okstat = stat(inname, &sb) == 0;
+			if (okstat && S_ISFIFO(sb.st_mode))
+				ispipe = 1;
 #ifdef WIN32
 			/*
 			 * Can't stat, can't open.  It may have been opened in
@@ -479,7 +481,7 @@ file_or_fd(struct magic_set *ms, const char *inname, int fd)
 			rv = 0;
 			goto done;
 		}
-#if O_CLOEXEC == 0 && defined(F_SETFD)
+#if O_CLOEXEC == 0 && defined(F_SETFD) && !defined(_WIN32)
 		(void)fcntl(fd, F_SETFD, FD_CLOEXEC);
 #endif
 	}
