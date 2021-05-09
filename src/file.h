@@ -85,6 +85,13 @@
 #ifndef _WIN32
 #include <sys/param.h>
 #endif
+#ifdef _MSC_VER
+#include <io.h>
+#define R_OK 4
+#define W_OK 2
+#define X_OK R_OK
+#define F_OK 0
+#endif
 /* Do this here and now, because struct stat gets re-defined on solaris */
 #include <sys/stat.h>
 #include <stdarg.h>
