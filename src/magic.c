@@ -462,7 +462,7 @@ file_or_fd(struct magic_set *ms, const char *inname, int fd)
 			rv = 0;
 			goto done;
 		}
-#if O_CLOEXEC == 0
+#if O_CLOEXEC == 0 && !defined(_WIN32)
 		(void)fcntl(fd, F_SETFD, FD_CLOEXEC);
 #endif
 	}
