@@ -1,4 +1,7 @@
 MAGIC = $(pkgdatadir)/magic
+if MINGW
+MAGIC != cygpath -m -a -l '$(MAGIC)'
+endif
 lib_LTLIBRARIES = libmagic.la
 nodist_include_HEADERS = magic.h
 
