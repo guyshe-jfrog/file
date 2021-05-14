@@ -353,7 +353,7 @@ ${MAGIC}: $(EXTRA_DIST) $(FILE_COMPILE_DEP)
 	@(if expr "${FILE_COMPILE}" : '.*/.*' > /dev/null; then \
 	    echo "Using ${FILE_COMPILE} to generate ${MAGIC}" > /dev/null; \
 	  else \
-	    v=$$(${FILE_COMPILE} --version | sed -e s/file-// -e q); \
+	    v=$$(${FILE_COMPILE} --version | sed -e s/file${EXEEXT}-// -e q); \
 	    if [ "$$v" != "${PACKAGE_VERSION}" ]; then \
 		echo "Cannot use the installed version of file ($$v) to"; \
 		echo "cross-compile file ${PACKAGE_VERSION}"; \
