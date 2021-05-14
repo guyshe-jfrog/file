@@ -104,6 +104,21 @@
 #endif
 #include <dirent.h>
 
+#if !defined(S_IFBLK)
+#define S_IFBLK 0
+#define	S_ISBLK(mode)  (((mode) & S_IFMT) == S_IFBLK)
+#endif
+
+#if !defined(S_IFLNK)
+#define S_IFLNK 0
+#define	S_ISLNK(mode)  (((mode) & S_IFMT) == S_IFLNK)
+#endif
+
+#if !defined(S_IFSOCK)
+#define S_IFSOCK 0
+#define	S_ISSOCK(mode)  (((mode) & S_IFMT) == S_IFSOCK)
+#endif
+
 #define ENABLE_CONDITIONALS
 
 #ifndef MAGIC
