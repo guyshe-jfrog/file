@@ -98,6 +98,7 @@
 /* Do this here and now, because struct stat gets re-defined on solaris */
 #include <sys/stat.h>
 #include <stdarg.h>
+#include <dirent.h>
 #include <locale.h>
 #if defined(HAVE_XLOCALE_H)
 #include <xlocale.h>
