@@ -840,6 +840,7 @@ file_print_guid(char *str, size_t len, const uint64_t *guid)
 #endif
 }
 
+#ifndef _WIN32
 protected int
 file_pipe_closexec(int *fds)
 {
@@ -864,6 +865,7 @@ file_clear_closexec(int fd) {
 	return 0;
 #endif
 }
+#endif
 
 protected char *
 file_strtrim(char *str)

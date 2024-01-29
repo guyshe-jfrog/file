@@ -39,7 +39,9 @@ FILE_RCSID("@(#)$File: magic.c,v 1.117 2021/12/06 15:33:00 christos Exp $")
 #include "magic.h"
 
 #include <stdlib.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <string.h>
 #ifdef QUICK
 #include <sys/mman.h>

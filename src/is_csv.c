@@ -166,7 +166,9 @@ file_is_csv(struct magic_set *ms, const struct buffer *b, int looks_text)
 #include <sys/stat.h>
 #include <stdio.h>
 #include <fcntl.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <stdlib.h>
 #include <stdint.h>
 #include <err.h>
